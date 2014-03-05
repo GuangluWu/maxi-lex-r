@@ -1,0 +1,18 @@
+# History files #
+#################
+.Rhistory
+
+# Example code in packge build process #
+*-Ex.R
+
+# Figures and PDF files #
+#########################
+.pdf
+.PDF
+.tiff
+.png
+
+# Removing folders just incase #
+################################
+figs
+output
