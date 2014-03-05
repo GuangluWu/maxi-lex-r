@@ -1,0 +1,90 @@
+/*This is output from an Android app designed to be used for a speech-processing experiment. 
+I need to split the coordinates in this file into 4 quadrants (0-3). Android uses a non Cartesian coordinate system like so http://bit.ly/1bpD7ze
+ 
+
+   0    |     1
+(-x,-y) |  (+x,-y)
+--------0----------
+   2    |     3
+(-x,+y) |  (+x,+y)
+
+
+# Code snippets
+
+# Reading files
+
+# Working out quadrants
+quadrant = function(x,y,l){l[[paste1(x>0,y>0)]]}
+
+quadrant = function(x,y,l){l[[paste(x>0,y>0,collapse="",sep="")]]}
+li=list("TRUETRUE"=1,"TRUEFALSE"=2,"FALSETRUE"=3,"FALSEFALSE"=4)
+quadrant(3,-9,li)
+
+#Header
+Session_Begin <sessID>  - start of the experiment
+Begin         <trailID> - start of the trial
+Down          <x,y>     - tap on the screen at x,y coordinates
+Move          <x,y>     - slide across the screen to x,y coordinates
+Synctime      f<num>    - start the audio file <num>
+Select        <imgID>   - selection made for <imgID>
+
+
+Sys.time(ms)| Command | x | y
+
+24794063 SESSION_BEGIN 1  # Start of the experiment
+24794283 BEGIN 79         # Start of a trial, 79 denotes the Image number
+24800253 DOWN -0.4187 -0.5750  # x y coordinates
+24800310 MOVE -0.4187 -0.5782
+24800314 DOWN -0.4187 -0.5782
+24803000 DOWN 0.6594 -0.4844
+24803028 MOVE 0.6516 -0.4766
+24803044 MOVE 0.6468 -0.4750
+24803071 MOVE 0.6438 -0.4781
+24803072 DOWN 0.6438 -0.4781
+24866941 DOWN -0.5531 0.3906
+24866973 MOVE -0.5559 0.3965
+24866989 MOVE -0.5562 0.4014
+24867000 MOVE -0.5562 0.4062
+24867001 DOWN -0.5562 0.4062
+24867476 SELECT 2            # Image number 2 has been selected
+24867537 DOWN -0.5688 0.4656
+24868344 BEGIN 76
+24876013 DOWN -0.5031 -0.3406
+....
+24880836 SYNCTIME f76        # Audio file activated 76 denotes the number
+24881053 DOWN 0.7312 -0.3438
+24881075 MOVE 0.7312 -0.3484
+24881108 MOVE 0.7376 -0.3373
+24881114 DOWN 0.7376 -0.3373
+24881546 DOWN -0.2906 -0.4250
+...
+24883564 DOWN -0.5029 -0.6273
+24884244 SELECT 0
+24884306 MOVE -0.1187 -0.5219
+24884307 DOWN -0.1187 -0.5219
+24886682 BEGIN 73
+24887576 DOWN -0.4563 -0.2812
+
+
+Number to list mapping
+
+1	1	baggage	bagpipes	airplane	almonds
+2	2	balaclava	ball	revolver	apple
+3	3	beard	beet2	razor	shelves
+4	4	biscuit	bin	toastie	van
+5	5	bone	boat	dog2	guitar
+
+
+Name of file
+
+Wavfile	Onset_select	Onset_CW	Offset_CW
+f01.mp3	1047	1984	2717
+f02.mp3	734	1586	2395
+f03.mp3	929	1926	2451
+f04.mp3	646	1638	2301
+f05.mp3	906	2088	2532
+f06.mp3	939	1981	2597
+f07.mp3	935	1863	2396
+f08.mp3	706	1590	2083
+f09.mp3	1069	2052	2579
+f10.mp3	714	1721	2472
