@@ -28,7 +28,7 @@ binCount2 <- function(x) {
 avgByTrial <- function(x) {
     aggregate(Freq~binf, x, mean)
 }
-
+setwd("D:/Dropbox/Maxi/R/r\ code/output")
 load(file="pog.RData", verbose=TRUE)
 load(file="stg.RData", verbose=TRUE)
 load(file="droid.RData", verbose=TRUE)
@@ -148,16 +148,21 @@ mapply(function(x, y) {
 dev.off()
 ###########################################
 
-binnedData <- xtabs(~bin, res.nox)
+binnedData <- function(df){
+    xtabs(~bin, df)
+}
+
+a <- binnedData(res.nox)
+#b <- binnedData(bins.droid)
 
 pdf("binnedData.pdf")
 
-plot(binnedData, 
+plot(a, 
     main="Individual Differences", 
     sub="A comparison of 3 data sets",
     xlab ="Time of onset",
     ylab ="Frequency", type='l', ylim=c(0,1000))
-points(binnedData-100,
+points(b,
     type='l', 
     ylim=c(0,1000), 
     col='red')
@@ -179,4 +184,3 @@ stg.bar <- barplot(c(mean(stg.count$before), mean(stg.count$after)), main="test"
 droid.bar <- barplot(c(mean(droid.count$before), mean(droid.count$after)), main="test",col=c("blue", "red"), width = c(1,1), ylim = c(0, 16))
 
 #dev.off()
-

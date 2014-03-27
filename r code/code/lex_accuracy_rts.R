@@ -46,10 +46,10 @@ tinfo4$Acc <- ifelse(tinfo4$Choice=="Targ",1,0)
 tinfo4$RT <- tinfo4$t1-tinfo4$Onset
 tinfo4$Preview <- tinfo4$Onset-tinfo4$t0
 
-pdf(file="boxplots.pdf", width=16, height=8)
+pdf(file="boxplots.pdf", width=25, height=8)
 par(mfrow=c(1,2))
-boxplot(Preview ~ SessionID, tinfo4, ylim=c(0,20000), main="Preview times for ")
-boxplot(RT ~ SessionID, tinfo4, main="rt")
+boxplot(Preview ~ SessionID, tinfo4, ylim=c(0,20000), main="Preview time before Word Onset", ylab="Time (ms)", xlab="Subject number")
+boxplot(RT ~ SessionID, tinfo4, main="Reaction times after Word Onset", xlab="Subject number")
 dev.off()
 
 write.csv(accinf, file="accuracyrt.csv")

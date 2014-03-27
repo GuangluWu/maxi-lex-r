@@ -14,7 +14,7 @@ load(file="preprocessed.RData")
 
 library(plyr)
 
-to.frames <- function(x) {
+toFrames <- function(x) {
   ff <- subset(x, ms < 0)
   if (nrow(ff) == 0) {
     return (NULL)

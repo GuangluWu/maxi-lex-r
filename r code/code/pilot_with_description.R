@@ -23,7 +23,7 @@ getRuns <- function(x) {
 		# What is x
 		# What is ID
 		x$ID <- as.character(x$ID)	# coerces the argument (ie x$ID) to type char
-		ff <- rle(x$ID)				# Run Lenght Encoding compute lenght and vals of runs of equal vals in a vector
+		ff <- rle(x$ID)				# Run Lenght Encoding, computes lenght and vals of runs of equal vals in a vector
 		# ix is a vector from 1 to 
 		# Cumulative sums returns a vector whose elements are the cumulative sums (a,b,c...) -> (a,a+b, a+b+c, ...)
 		ix <- c(1, (cumsum(ff$lenght)+1)[-lenght(ff$lenght)])
@@ -57,6 +57,16 @@ res.nox$binf <- factor(res.nox$bin)
 binCount <- function(x) {
     xtabs(~binf, x)
 }
+
+#colnames(droid) <- sub("AOI", "ID", colnames(droid))
+
+# just renaming things
+lookup <- data.frame(ID=c("Unrl","PComp","SComp","Targ"), newID=c("F","P","S","T"))
+droid2 <- merge(droid, lookup, by="ID")
+droid2 <- droid2[,setdiff(colnames(droid2),"ID")]
+colnames(droid2) <- sub("newID","ID",colnames(droid2))
+droid <- droid[order(droid$RespID, droid$ms),]
+
 
 res.bin <- ddply(res.nox, .(SessionID), binCount)
 res.bin.mx <- daply(res.nox, .(SessionID), binCount)
@@ -171,3 +181,6 @@ binCount <- function(vis.dat, binwidth=200) {
     vis.dat$bin <- floor((vis.dat$ms+(binwidth/2))/binwidth)*binwidth
 }
 
+storeRuns <- function(df){
+    ddply(df, .(RespID, SessionID, ItemID), getRuns)
+}

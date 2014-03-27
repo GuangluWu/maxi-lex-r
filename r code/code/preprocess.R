@@ -1,4 +1,4 @@
-setwd("D:/Dropbox/Maxi/R/preprocessing")
+setwd("D:/Dropbox/Maxi/R/r\ code/output/")
 
 library(XML)
 library(plyr)
