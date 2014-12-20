@@ -1,7 +1,7 @@
 ## T-test
 
 library(plyr)
-setwd("/code/output")
+setwd("/output")
 load(file = "preprocessed.RData", verbose = TRUE)
 load(file = "alldat.RData", verbose = TRUE)
 
